@@ -1,0 +1,8 @@
+{
+  "name": "Hollman Consultancy - ATS & CRM",
+  "description": "High-end recruitment platform for the construction and real estate sector, featuring a public vacancy site and internal ATS/CRM system.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
