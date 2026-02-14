@@ -1,12 +1,13 @@
 
 import React from 'react';
-import { ArrowRight, Building2, HardHat, Users2, ShieldCheck, ChevronRight, Palette, Cpu, Compass } from 'lucide-react';
+import { Building2, HardHat, Users2, ShieldCheck, Palette, Cpu, Compass, Phone, Mail } from 'lucide-react';
+import { HollmanLogo } from '../../components/Logo';
 
-interface HomeProps {
-  onNavigate: (path: string) => void;
-}
+const scrollToContact = () => {
+  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+};
 
-const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+const Home: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
@@ -33,22 +34,12 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             <p className="text-xl md:text-2xl text-slate-400 mb-12 leading-relaxed max-w-2xl font-light">
               "Your sustainable recruitment partner, building the future with the right people."
             </p>
-            <div className="flex flex-col sm:flex-row gap-5">
-              <button 
-                onClick={() => onNavigate('/vacatures')}
-                className="px-10 py-5 bg-white text-[#1B263B] font-bold rounded-xl hover:bg-slate-200 transition-all flex items-center justify-center gap-3 group shadow-2xl shadow-black/20"
-              >
-                Bekijk vacatures
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button 
-                onClick={() => onNavigate('/inschrijven')}
-                className="px-10 py-5 bg-transparent border border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center gap-3 group"
-              >
-                Schrijf je in
-                <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
+            <button 
+              onClick={scrollToContact}
+              className="px-10 py-5 bg-white text-[#1B263B] font-bold rounded-xl hover:bg-slate-200 transition-all flex items-center justify-center gap-3 group shadow-2xl shadow-black/20"
+            >
+              Stuur een bericht
+            </button>
           </div>
         </div>
       </section>
@@ -83,7 +74,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* Contact Form (Static with Netlify) */}
-      <section className="py-32 bg-slate-50">
+      <section id="contact" className="py-32 bg-slate-50">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="bg-white p-12 rounded-[2.5rem] shadow-xl border border-slate-100">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -109,6 +100,59 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-[#1B263B] text-slate-300 py-16 border-t border-slate-800">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="col-span-1 md:col-span-1">
+            <div className="flex items-center mb-8">
+              <HollmanLogo dark className="h-16 items-start" />
+            </div>
+            <p className="text-sm leading-relaxed text-slate-400 mb-6 italic">
+              "Your sustainable recruitment partner, building the future with the right people."
+            </p>
+            <div className="space-y-3 text-xs font-bold tracking-wide">
+              <div className="flex items-center gap-2">
+                <Phone size={14} className="text-slate-500" />
+                <span>+31 6 53 64 51 81</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail size={14} className="text-slate-500" />
+                <span>Info@hollman-consultancy.nl</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-6 text-xs uppercase tracking-widest">Sectoren</h4>
+            <ul className="space-y-4 text-sm">
+              <li><span className="text-slate-400">Woningbouw</span></li>
+              <li><span className="text-slate-400">Vastgoed</span></li>
+              <li><span className="text-slate-400">Infrastructuur</span></li>
+              <li><span className="text-slate-400">Projectontwikkeling</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-6 text-xs uppercase tracking-widest">Diensten</h4>
+            <ul className="space-y-4 text-sm">
+              <li><span className="text-slate-400">Werving & Selectie</span></li>
+              <li><span className="text-slate-400">Interim Recruitment</span></li>
+              <li><span className="text-slate-400">Talent Mapping</span></li>
+              <li><span className="text-slate-400">Executive Search</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-6 text-xs uppercase tracking-widest">Legal</h4>
+            <ul className="space-y-4 text-sm">
+              <li><span className="text-slate-400">Privacy Policy</span></li>
+              <li><span className="text-slate-400">Cookie instellingen</span></li>
+              <li><span className="text-slate-400">GDPR Verzoek</span></li>
+            </ul>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16 pt-8 border-t border-slate-800 text-[10px] text-slate-500 flex flex-col md:flex-row justify-between items-center gap-4 uppercase tracking-widest">
+          <p>© {new Date().getFullYear()} Hollman Consultancy. Alle rechten voorbehouden.</p>
+        </div>
+      </footer>
     </div>
   );
 };
